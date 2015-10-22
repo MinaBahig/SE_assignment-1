@@ -20,23 +20,26 @@ public:
 
 	Person(const string & ln, const char * fn = "Heyyou")
 	{
-		fn = &fname[0];
+		for (int i=0; i<LIMIT;i++)
+		{		
+			fname[i] = *fn;
+			if (*fn == '\0')
+			{
+				fname[i] = '\0';
+				break;
+			}
+			else *fn++;
+		}
 		lname = ln;
 	}// #2
 
-	Person(const string & ln)
-	{
-
-		fname[0] = '\0';
-	}
-
 	void Show() const
 	{
-		cout << "Welcome, " << fname << lname ;
+		cout << "Welcome, " << fname << " " << lname ;
 	}
 	void FormalShow() const
 	{
-		cout << "Welcome, " << lname << fname ;
+		cout << "Welcome, " << lname << " " << fname ;
 	}
 
 };
